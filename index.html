@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body> 
+
+   <div class="clock">
+     
+	
+	 
+	 <div class="bg">
+		   <h2 id="h">12</h2>
+	 </div>
+
+		   <h2>:</h2>
+
+	 <div class="bg">
+	       <h2 id="m">20</h2>      
+	 </div>
+
+		   <h2>:</h2>
+
+	 <div class="bg">
+	      <h2 id="s">00</h2>
+	 </div>
+
+    <div class="bg">
+        <h2 id="ap">AM</h2>
+    </div>
+
+   </div>
+
+
+<script type="text/javascript">
+	
+ realTime();
+
+ function realTime() {
+
+  var date = new Date();
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  var halfday = "AM";
+  halfday = (hour >= 12) ? "PM" : "AM";
+  hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour);
+  hour = update(hour);
+  min = update(min);
+  sec = update(sec);
+  document.getElementById("h").innerText = hour;
+  document.getElementById("m").innerText = min;
+  document.getElementById("s").innerText = sec;
+  document.getElementById("ap").innerText = halfday;
+
+  setTimeout(realTime, 1000);
+}
+
+function update(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+</script>
+
+
+</body>
+</html>
